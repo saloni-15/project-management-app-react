@@ -30,7 +30,7 @@ export default function NewProject({ onAdd, onCancel }) {
       dueDate: enteredDueDate,
     });
   }
-
+  const currentDate = new Date().toISOString().split('T')[0];
   return (
     <>
       <Modal ref={modal} buttonCaption="Close">
@@ -62,7 +62,7 @@ export default function NewProject({ onAdd, onCancel }) {
           {/* for custom components we cannot directly pass the ref, instead we need to use forwardRef in the Input component and then pass the refs */}
           <Input type="text" ref={title} label="Title" />
           <Input ref={description} label="Description" textarea />
-          <Input type="date" ref={dueDate} label="Due Date" />
+          <Input type="date" ref={dueDate} label="Due Date" min={currentDate}/>
         </div>
       </div>
     </>
